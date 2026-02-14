@@ -73,7 +73,7 @@ OBFUSCATION_PATTERNS = [
     r"(\bmd5\b|\bsha1\b|\bsha256\b)",  # Hash-based obfuscation
     r"(\bblind_sql\b|\btime_delay\b)",  # Blind SQL injection techniques
     r"(\bcase when\b|\bcase\b|\bthen\b)",  # SQL CASE obfuscation
-    r"(?:--)|(/\*.*?\*/)|(#.*?\n)",  # Comment-based SQL obfuscation
+    r"(?:--)|(/\*.*?\*/)|(#.*?\n)",  # Comment-based SQL obfuscation    
 ]
 
 def check_signature(user_input: str):

