@@ -128,38 +128,17 @@ GET /comment?text=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E HTTP/1.1
 Host: www.example.com
 ```
 
-## 🛠️Setup
+## 🌐 Live Deployment
 
-1. Clone the repository:
+The project is publicly deployed and accessible below:
 
-bash
-```
-git clone https://github.com/YOUR_USERNAME/Advanced-WAF-WAFinity.git
-```
-```
-cd Advanced-WAF-WAFinity
-```
+🔗 https://wafinity.onrender.com  
 
-2. Install dependencies:
+This live demo allows users to interact with the hybrid Web Application Firewall and test request filtering in real time.
 
-bash
-```
-pip install -r requirements.txt
-```
 
-3. Run the application:
+## 👩‍💻 Author
+Sakshi Kumar  
+Final Year B.Tech CSE Student  
 
-bash
-```
-python app.py
-```
-
-## License
-
-MIT License
-" > README.md
-
-## Add and commit README
-git add README.md
-git commit -m "Add README.md"
-git push
+This project was extended, modified, and deployed by me as part of my security/ML learning work.
